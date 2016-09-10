@@ -10,7 +10,7 @@ namespace DictionaryHash
     {
         private static int capacity = 100000;
         private Pair_KeyValue[] table;
-        private Pair_KeyValue note;
+
        
         public MyDictionary()
         {
@@ -30,79 +30,80 @@ namespace DictionaryHash
             return table[i];
         }
 
-        public  void Add(string key, string value)
+        public  bool Add(string key, string value)
         {
-               note = new Pair_KeyValue(key, value);
-               int index = Hash(key);
-            
-               table[index]=note;
+            if (DataIsCorrect(key, value))
+            {
+                Pair_KeyValue note = new Pair_KeyValue(key, value);
+                int index = Hash(key);
+                table[index] = note;
+                return true;
+            }
+             return false;
         }
 
         public string Choose(string key)
         {
-            int index = Hash(key);
-            return table[index].Value;
-        }
+            if (KeyExist(key))
+            {
+                int index = Hash(key);
+                return table[index].Value;
+            }
 
+            else return null;
+        }
         
         public void Delete(string key)
         {
-            bool keyExist = false;
-            
-                for (int i = 0; i < table.Length; i++)
-                {
-                    if (table[i]!= null)
-                    {
-                        if (key == table[i].Key)
-                           {
-                                 keyExist = true;
-                                 break;
-                           }   
-                    }
-
-                if (keyExist) Array.Clear(table, Hash(key), 1);
-            }
-
-           
+           if (KeyExist(key)) table[Hash(key)] = null;  
         }
 
         private int Hash(string key)
         {
-            int foo =Math.Abs( key.GetHashCode()/100000);
-            /*
-            int sum = 0;
-            for (int i = 0; i < key.Length; i++)
-            {
-                sum += key[i];
-            }
-
-            int sum2;
-            if (key.Length>=2) sum2 = key[key.Length - 1]+ key[key.Length - 2]; 
-            else sum2 = key[key.Length - 1];
-            */
-
-            return (foo);
+             return (Math.Abs(key.GetHashCode() / 100000));
         }
 
-        public bool DataIsCorrect(string key, string value)
+        private bool KeyExist(string key)
         {
-            if (key == "" || value == "")  return false;
-
-           
+            if (key != "")
+            {
                 for (int i = 0; i < table.Length; i++)
                 {
-                   if (table[i] != null)
-                   {
-                      if (key == table[i].Key) return false;
-                   }
+                    if (table[i] != null)
+                    {
+                        if (key == table[i].Key) return true;
+                    }
                 }
-            
-            
-            return true;
-        } // !
+            }
+            return false;
+
+        }
+
+        private bool DataIsCorrect(string key, string value)
+        {
+            if (key == "" || value == "") return false;
+
+            string keyDublicate = (string)key.Clone();
+            while (keyDublicate.Contains(" "))
+            {
+                keyDublicate = keyDublicate.Remove(keyDublicate.IndexOf(" "));
+            }
+            if (keyDublicate.Length == 0) return false;
+            else
+            {
+                for (int i = 0; i < table.Length; i++)
+                {
+                    if (table[i] != null)
+                    {
+                        if (key == table[i].Key) return false;
+                    }
+                }
+
+                return true;
+            }
 
 
-
+        }
 
     }
 }

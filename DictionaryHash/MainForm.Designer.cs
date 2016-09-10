@@ -39,6 +39,7 @@
             this.key_hint_lbl = new System.Windows.Forms.Label();
             this.value_hint_lbl = new System.Windows.Forms.Label();
             this.show_all_btn = new System.Windows.Forms.Button();
+            this.test_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.table_dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,7 +132,7 @@
             // 
             // show_all_btn
             // 
-            this.show_all_btn.Location = new System.Drawing.Point(285, 209);
+            this.show_all_btn.Location = new System.Drawing.Point(285, 122);
             this.show_all_btn.Name = "show_all_btn";
             this.show_all_btn.Size = new System.Drawing.Size(75, 23);
             this.show_all_btn.TabIndex = 12;
@@ -139,11 +140,22 @@
             this.show_all_btn.UseVisualStyleBackColor = true;
             this.show_all_btn.Click += new System.EventHandler(this.show_all_btn_Click);
             // 
+            // test_btn
+            // 
+            this.test_btn.Location = new System.Drawing.Point(285, 151);
+            this.test_btn.Name = "test_btn";
+            this.test_btn.Size = new System.Drawing.Size(75, 23);
+            this.test_btn.TabIndex = 13;
+            this.test_btn.Text = "Test";
+            this.test_btn.UseVisualStyleBackColor = true;
+            this.test_btn.Click += new System.EventHandler(this.test_btn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(397, 333);
+            this.Controls.Add(this.test_btn);
             this.Controls.Add(this.show_all_btn);
             this.Controls.Add(this.value_hint_lbl);
             this.Controls.Add(this.key_hint_lbl);
@@ -174,6 +186,7 @@
         private System.Windows.Forms.Label key_hint_lbl;
         private System.Windows.Forms.Label value_hint_lbl;
         private System.Windows.Forms.Button show_all_btn;
+        private System.Windows.Forms.Button test_btn;
     }
 }
 
