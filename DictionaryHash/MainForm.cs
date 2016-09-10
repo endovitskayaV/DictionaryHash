@@ -49,7 +49,7 @@ namespace DictionaryHash
 
         private void choose_btn_Click(object sender, EventArgs e)
         {
-            if (!key_tb.Text.Equals(""))
+            if (key_tb.Text!="")
             {
                 string value = mydictionary.Choose(key_tb.Text);
                 table_dataGridView.Rows.Clear();
