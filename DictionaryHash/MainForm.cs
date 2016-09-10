@@ -55,7 +55,7 @@ namespace DictionaryHash
                 table_dataGridView.Rows.Clear();
                 table_dataGridView.Rows.Add(key_tb.Text, value);
             }
-            else MessageBox.Show("Mistake!!");
+            else MessageBox.Show("Mistake!");
 
             key_tb.Clear();
             value_tb.Clear();
